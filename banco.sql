@@ -55,7 +55,7 @@ create table if not exists reserva (
     cod_reserva integer generated always as identity primary key,
     dt_reserva date not null,
     valor_total numeric not null,
-    cod_pagamento integert not null,
+    cod_pagamento integer not null,
     foreign key (cod_pagamento) references pagamento (cod_pagamento)
 );
 

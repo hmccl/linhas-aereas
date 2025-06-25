@@ -14,10 +14,10 @@ Projeto de banco de dados relacional para uma companhia aérea fictícia, implem
 
 ## Roadmap
 
-- [] Criar tabelas
-- [] Criar função para inserts
-- [] Criar função para deletes
-- [] Criar função para alterações
-- [] Estruturar movimentações para consistência de dados (triggers)
-- [] Criar controle de acesso
-- [] Criar relatórios
+- [ ] Criar tabelas
+- [ ] Criar função para inserts
+- [ ] Criar função para deletes
+- [ ] Criar função para alterações
+- [ ] Estruturar movimentações para consistência de dados (triggers)
+- [ ] Criar controle de acesso
+- [ ] Criar relatórios
