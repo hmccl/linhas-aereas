@@ -16,10 +16,10 @@ create table if not exists assento (
     num_assento text primary key
 );
 
--- check forma, opções
+-- check opções de pagamento
 create table if not exists pagamento (
-    cod_pagamento integer generated always as identity primary key,
-    forma text not null
+    cod_pagamento text not null primary key,
+    nome text not null
 );
 
 -- 2. Tabelas dependentes
@@ -55,7 +55,7 @@ create table if not exists reserva (
     cod_reserva integer generated always as identity primary key,
     dt_reserva date not null,
     valor_total numeric not null,
-    cod_pagamento integer not null,
+    pagamento text not null,
     foreign key (cod_pagamento) references pagamento (cod_pagamento)
 );
 
