@@ -15,9 +15,12 @@
 3. Cadastro de voos
   - Preenche tabelas: Voo, Itinerario.
   - O tipo de voo identifica se é a origem ou destino do código do voo em questão.
-4. Cadastro de reservas
-  - Preenche tabelas: Reserva, Pagamento, Parcela, Passagem, Passagem_Voo.
-  - Um reserva pode ter mais de um passageiro, e todos eles fazem o mesmo voo.
+4. Cadastro de passagens
+  - Preenche tabelas: Passagem, Passagem_Voo.
+5. Cadastro de reservas
+  - Preenche tabelas: Reserva.
+6. Cadastro de pagamento
+  - Preenche tabelas: Pagamento, Parcela.
 
 # Delete
 
@@ -27,8 +30,6 @@
   - Remove ou tira referência das linhas da tabela: Aeroporto.
 2. Deletar aeronave
   - Remove ou tira referência das linhas da tabela: Aeronave.
-3. Deletar voos
-  - Remove ou tira referência das linhas da tabela: Voo e Itinerario.
 
 # Update
 
