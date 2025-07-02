@@ -14,6 +14,7 @@
   - Para o número de assentos será informado o número total e os números serão automáticos.
 3. Cadastro de voos
   - Preenche tabelas: Voo, Itinerario.
+  - O tipo de voo identifica se é a origem ou destino do código do voo em questão.
 4. Cadastro de reservas
   - Preenche tabelas: Reserva, Pagamento, Parcela, Passagem, Passagem_Voo.
   - Um reserva pode ter mais de um passageiro, e todos eles fazem o mesmo voo.
