@@ -15,7 +15,7 @@ select cadastrar_aeroporto('CNF', 'Belo Horizonte');
 select cadastrar_aeroporto('FLN', 'Florianópolis');
 select cadastrar_aeroporto('THE', 'Teresina');
 
--- Insere diversa aeronaves na forta da companhia
+-- Insere diversas aeronaves na forta da companhia
 select cadastrar_aeronave('Boeing 737', 180);
 select cadastrar_aeronave('Boeing 737', 150);
 select cadastrar_aeronave('Boeing 777', 300);
@@ -23,3 +23,9 @@ select cadastrar_aeronave('Airbus A320', 150);
 select cadastrar_aeronave('Airbus A320', 130);
 select cadastrar_aeronave('Airbus A330', 200);
 select cadastrar_aeronave('Cessna 208', 10);
+
+-- Insere diversos voos na agenda da companhia
+select cadastrar_voo('2025-12-15', '2025-12-15', 1, 'GRU', 'SDU');
+select cadastrar_voo('2025-12-15', '2025-12-16', 2, 'GRU', 'SDU');
+select cadastrar_voo('2025-12-25', '2025-12-25', 3, 'BEL', 'FLN');
+select cadastrar_voo('2025-12-25', '2025-12-25', 6, 'REC', 'BSB');
