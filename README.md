@@ -6,18 +6,19 @@ Projeto de banco de dados relacional para uma companhia aérea fictícia, implem
 
 ### Diagrama Entidade-Relacionamento
 
-![Diagrama Entidade-Relacionamento](./linhas-aereas-ER.drawio.png)
+![Diagrama Entidade-Relacionamento](./imagens/linhas-aereas-ER.drawio.png)
 
 ### Tabelas
 
-![Tabelas](./linhas-aereas-Tables.drawio.png)
+![Tabelas](./imagens/linhas-aereas-Tables.drawio.png)
 
 ## Roadmap
 
-- [ ] Criar tabelas
+- [x] Criar tabelas
 - [ ] Criar função para inserts
 - [ ] Criar função para deletes
 - [ ] Criar função para alterações
 - [ ] Estruturar movimentações para consistência de dados (triggers)
 - [ ] Criar controle de acesso
 - [ ] Criar relatórios
+- [ ] Melhorar documentação
