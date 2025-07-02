@@ -1,0 +1,25 @@
+-- Insere aeroportos do Brasil
+select cadastrar_aeroporto('GRU', 'São Paulo');
+select cadastrar_aeroporto('SDU', 'Rio de Janeiro');
+select cadastrar_aeroporto('BSB', 'Brasília');
+select cadastrar_aeroporto('CGH', 'São Paulo');
+select cadastrar_aeroporto('SSA', 'Salvador');
+select cadastrar_aeroporto('FOR', 'Fortaleza');
+select cadastrar_aeroporto('REC', 'Recife');
+select cadastrar_aeroporto('POA', 'Porto Alegre');
+select cadastrar_aeroporto('CWB', 'Curitiba');
+select cadastrar_aeroporto('BEL', 'Belém');
+select cadastrar_aeroporto('MAO', 'Manaus');
+select cadastrar_aeroporto('VIX', 'Vitória');
+select cadastrar_aeroporto('CNF', 'Belo Horizonte');
+select cadastrar_aeroporto('FLN', 'Florianópolis');
+select cadastrar_aeroporto('THE', 'Teresina');
+
+-- Insere diversa aeronaves na forta da companhia
+select cadastrar_aeronave('Boeing 737', 180);
+select cadastrar_aeronave('Boeing 737', 150);
+select cadastrar_aeronave('Boeing 777', 300);
+select cadastrar_aeronave('Airbus A320', 150);
+select cadastrar_aeronave('Airbus A320', 130);
+select cadastrar_aeronave('Airbus A330', 200);
+select cadastrar_aeronave('Cessna 208', 10);

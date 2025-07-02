@@ -37,9 +37,9 @@ create table if not exists itinerario (
     cod_itinerario integer generated always as identity primary key,
     tipo_voo text not null,
     cod_voo integer not null,
-    cod_aeronave integer not null,
+    cod_aeroporto text not null,
     foreign key (cod_voo) references voo (cod_voo),
-    foreign key (cod_aeronave) references aeronave (cod_aeronave)
+    foreign key (cod_aeroporto) references aeroporto (cod_aeroporto)
 );
 
 create table if not exists mapa (
@@ -55,7 +55,7 @@ create table if not exists reserva (
     cod_reserva integer generated always as identity primary key,
     dt_reserva date not null,
     valor_total numeric not null,
-    pagamento text not null,
+    cod_pagamento text not null,
     foreign key (cod_pagamento) references pagamento (cod_pagamento)
 );
 
