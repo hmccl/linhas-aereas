@@ -15,12 +15,33 @@
 3. Cadastro de voos
   - Preenche tabelas: Voo, Itinerario.
   - O tipo de voo identifica se é a origem ou destino do código do voo em questão.
-4. Cadastro de passagens
-  - Preenche tabelas: Passagem, Passagem_Voo.
-5. Cadastro de reservas
-  - Preenche tabelas: Reserva.
-6. Cadastro de pagamento
-  - Preenche tabelas: Pagamento, Parcela.
+4. Cadastro de tipo de pagamento
+  - Preenche tabela: Pagamento.
+  - São três tipos: PIX, Cartão de Crédito (CC), Cartão de Débito (CD).
+4. Cadastro de compra
+  - Preenche tabelas: Reserva, Passagem, Passagem_Voo, Parcela.
+  - Uma grande função para os seguintes passos:
+    - Primeiro a tabela Reserva será preenchida.
+      - O código da reserva será gerado.
+      - A data será do dia atual.
+      - O valor_total inicialmente será 0 (zero).
+      - O código do pagamento será inserido.
+    - Depois a tabela Passagem será preechida.
+      - O códido da passagem é gerado.
+      - O código da reserva é preenchido.
+      - O código do passageiro é gerado.
+      - O nome do passageiro é preenchido.
+      - O valor da passagem é preenchido.
+    - Depois a tabela Passagem_Voo é preenchida.
+      - O num_assento é determinado automaticamente, com assento disponível.
+    - Depois a tabela Reserva será atualizada.
+      - A soma das passagens de determinada reserva preenche o valor_total.
+    - Por fim, a tabela Parcela será preenchida.
+      - O código da parcela é gerado.
+      - O código da reserva é preenchido.
+      - O número de parcelas passado para a função determina:
+        - O valor das parcelas.
+        - As datas das parcelas, ou seja, soma mais trinta dias para a data da próxima parcela.
 
 # Delete
 

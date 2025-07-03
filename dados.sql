@@ -29,3 +29,31 @@ select cadastrar_voo('2025-12-15', '2025-12-15', 1, 'GRU', 'SDU');
 select cadastrar_voo('2025-12-15', '2025-12-16', 2, 'GRU', 'SDU');
 select cadastrar_voo('2025-12-25', '2025-12-25', 3, 'BEL', 'FLN');
 select cadastrar_voo('2025-12-25', '2025-12-25', 6, 'REC', 'BSB');
+
+-- Insere os tipos de pagamentos aceitos
+select cadastrar_tipo_pagamento('PIX', 'PIX');
+select cadastrar_tipo_pagamento('CC', 'Cartão de Crédito');
+select cadastrar_tipo_pagamento('CD', 'Cartão de Débito');
+
+-- Inserir exemplos de compras
+select cadastrar_compra(
+    '3',
+    'Maria',
+    '2000',
+    'CC',
+    5
+);
+select cadastrar_compra(
+    '1',
+    'Joã0',
+    '700',
+    'CD',
+    1
+);
+select cadastrar_compra(
+    '2',
+    'Augustp',
+    '300',
+    'PIX',
+    1
+);
