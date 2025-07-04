@@ -73,7 +73,6 @@ create table if not exists passagem (
     cod_passagem integer generated always as identity primary key,
     cod_passageiro integer generated always as identity unique,
     nome_passageiro text not null,
-    valor_passagem numeric not null,
     cod_reserva integer not null,
     foreign key (cod_reserva) references reserva (cod_reserva)
 );
@@ -82,6 +81,7 @@ create table if not exists passagem (
 create table if not exists passagem_voo (
     cod_passagem integer not null,
     cod_voo integer not null,
+    valor_passagem numeric not null,
     num_assento text not null,
     primary key (cod_passagem, cod_voo),
     foreign key (cod_passagem) references passagem (cod_passagem),

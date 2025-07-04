@@ -102,21 +102,22 @@ BEGIN
     VALUES (CURRENT_DATE, 0, v_cod_pagamento_upper) 
     RETURNING cod_reserva INTO v_cod_reserva;
     
-    -- PASSO 2: Inserir na tabela Passagem
-    INSERT INTO passagem (nome_passageiro, valor_passagem, cod_reserva) 
-    VALUES (TRIM(p_nome_passageiro), p_valor_passagem, v_cod_reserva) 
+    -- PASSO 2: Inserir na tabela Passagem (SEM valor_passagem)
+    INSERT INTO passagem (nome_passageiro, cod_reserva) 
+    VALUES (TRIM(p_nome_passageiro), v_cod_reserva) 
     RETURNING cod_passagem INTO v_cod_passagem;
     
-    -- PASSO 3: Inserir na tabela Passagem_Voo
-    INSERT INTO passagem_voo (cod_passagem, cod_voo, num_assento) 
-    VALUES (v_cod_passagem, p_cod_voo, v_num_assento);
+    -- PASSO 3: Inserir na tabela Passagem_Voo (COM valor_passagem)
+    INSERT INTO passagem_voo (cod_passagem, cod_voo, valor_passagem, num_assento) 
+    VALUES (v_cod_passagem, p_cod_voo, p_valor_passagem, v_num_assento);
     
     -- PASSO 4: Atualizar valor_total na tabela Reserva
     UPDATE reserva 
     SET valor_total = (
-        SELECT SUM(valor_passagem) 
-        FROM passagem 
-        WHERE cod_reserva = v_cod_reserva
+        SELECT SUM(pv.valor_passagem) 
+        FROM passagem p
+        INNER JOIN passagem_voo pv ON p.cod_passagem = pv.cod_passagem
+        WHERE p.cod_reserva = v_cod_reserva
     )
     WHERE cod_reserva = v_cod_reserva;
     
@@ -183,7 +184,7 @@ BEGIN
         p.cod_passagem,
         p.cod_passageiro,
         p.nome_passageiro,
-        p.valor_passagem,
+        pv.valor_passagem,  -- Agora vem da tabela passagem_voo
         v.cod_voo,
         pv.num_assento,
         v.dt_partida,

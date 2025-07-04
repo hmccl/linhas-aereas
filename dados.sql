@@ -45,14 +45,35 @@ select cadastrar_compra(
 );
 select cadastrar_compra(
     '1',
-    'Joã0',
+    'João',
     '700',
     'CD',
     1
 );
 select cadastrar_compra(
     '2',
-    'Augustp',
+    'Augusto',
+    '300',
+    'PIX',
+    1
+);
+select cadastrar_compra(
+    '2',
+    'Ana',
+    '300',
+    'PIX',
+    1
+);
+select cadastrar_compra(
+    '2',
+    'Ena',
+    '300',
+    'PIX',
+    1
+);
+select cadastrar_compra(
+    '2',
+    'José',
     '300',
     'PIX',
     1

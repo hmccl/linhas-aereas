@@ -31,8 +31,8 @@
       - O código da reserva é preenchido.
       - O código do passageiro é gerado.
       - O nome do passageiro é preenchido.
-      - O valor da passagem é preenchido.
     - Depois a tabela Passagem_Voo é preenchida.
+      - O valor da passagem é preenchido.
       - O num_assento é determinado automaticamente, com assento disponível.
     - Depois a tabela Reserva será atualizada.
       - A soma das passagens de determinada reserva preenche o valor_total.
