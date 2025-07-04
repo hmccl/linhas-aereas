@@ -10,7 +10,7 @@ Projeto de banco de dados relacional para uma companhia aérea fictícia, implem
 
 ### Tabelas
 
-![Tabelas](./imagens/linhas-aereas-Tables.drawio.png)
+![Tabelas](./imagens/linhas-aereas-tables.png)
 
 ## Roadmap
 
