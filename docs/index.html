@@ -21,6 +21,131 @@
         <img src="../imagens/linhas-aereas-tables.png" alt="Diagrama do Banco de Dados.">
         <figcaption>Diagrama do Banco de Dados.</figcaption>
       </figure>
+
+      <h2>Funções</h2>
+
+      <h3>Insert</h3>
+      <h4>Cadastrar Aeroporto</h4>
+      <pre><code>SELECT cadastrar_aeroporto('GRU', 'São Paulo');</code></pre>
+      <p>Cadastra um novo aeroporto com código IATA de 3 letras e cidade.</p>
+
+      <h4>Cadastrar Aeronave</h4>
+      <pre><code>SELECT cadastrar_aeronave('Boeing 737', 180);</code></pre>
+      <p>Cadastra uma nova aeronave com modelo e número de assentos. Os assentos são gerados automaticamente (1A, 1B, 1C, 1D, 2A, etc.).</p>
+
+      <h4>Cadastrar Voo</h4>
+      <pre><code>SELECT cadastrar_voo('2025-12-15', '2025-12-15', 1, 'GRU', 'SDU');</code></pre>
+      <p>Cadastra um voo com datas de partida e chegada, aeronave, aeroporto de origem e destino.</p>
+
+      <h4>Cadastrar Tipo de Pagamento</h4>
+      <pre><code>SELECT cadastrar_tipo_pagamento('PIX', 'PIX');
+SELECT cadastrar_tipo_pagamento('CC', 'Cartão de Crédito');
+SELECT cadastrar_tipo_pagamento('CD', 'Cartão de Débito');</code></pre>
+      <p>Cadastra os tipos de pagamento aceitos (PIX, Cartão de Crédito, Cartão de Débito).</p>
+
+      <h4>Cadastrar Compra</h4>
+      <pre><code>SELECT cadastrar_compra('1', 'João Silva', '300', 'PIX', 1);</code></pre>
+      <p>Realiza uma compra completa: cria reserva, passagem, passagem_voo com assento automático e parcelas. PIX e débito não podem ser parcelados, crédito permite até 12 parcelas.</p>
+
+      <h3>Delete</h3>
+      <h4>Deletar Aeroporto</h4>
+      <pre><code>-- Verificar dependências primeiro
+SELECT * FROM verificar_dependencias_aeroporto('VIX');
+
+-- Deletar se não houver voos vinculados
+SELECT deletar_aeroporto('VIX');
+
+-- Forçar deleção (remove todos os voos)
+SELECT deletar_aeroporto_forcado('VIX', TRUE);</code></pre>
+      <p>Remove aeroportos. Só permite remoção se não houver voos vinculados. A versão "forcado" remove todos os voos associados.</p>
+
+      <h4>Deletar Aeronave</h4>
+      <pre><code>-- Verificar dependências primeiro
+SELECT * FROM verificar_dependencias_aeronave(1);
+
+-- Deletar se não houver voos futuros
+SELECT deletar_aeronave(1);
+
+-- Forçar deleção (cancela voos futuros)
+SELECT deletar_aeronave_forcado(1, TRUE);</code></pre>
+      <p>Remove aeronaves. Não permite remoção se houver voos futuros programados. Voos históricos são mantidos para auditoria.</p>
+
+      <h3>Update</h3>
+      <h4>Alterar Horário de Voo</h4>
+      <pre><code>-- Verificar detalhes do voo
+SELECT * FROM consultar_detalhes_voo_alteracao(1);
+
+-- Alterar horário (só pode adiar)
+SELECT alterar_horario_voo(1, '2025-12-16', '2025-12-16');</code></pre>
+      <p>Altera datas de partida e chegada de voos. <strong>Restrição:</strong> as datas só podem ser adiadas, nunca antecipadas. Verifica conflitos de aeronave e notifica sobre passageiros afetados.</p>
+
+      <h3>Relatórios</h3>
+      <h4>Para Passageiros</h4>
+      <pre><code>-- Informações do voo
+SELECT * FROM buscar_voo(1);
+
+-- Informações da reserva
+SELECT * FROM consultar_compra(1);
+SELECT * FROM consultar_parcelas(1);</code></pre>
+
+      <h4>Para Atendentes</h4>
+      <pre><code>-- Lista de passageiros do voo
+SELECT * FROM listar_passageiros_voo(1);
+
+-- Voos disponíveis
+SELECT * FROM consultar_voos_disponiveis();</code></pre>
+
+      <h4>Para Gerentes</h4>
+      <pre><code>-- Ocupação de voos em período
+SELECT * FROM relatorio_ocupacao('2025-12-01', '2025-12-31');
+
+-- Quantidade de clientes distintos
+SELECT COUNT(DISTINCT nome_passageiro) as clientes_distintos
+FROM passagem p
+INNER JOIN reserva r ON p.cod_reserva = r.cod_reserva
+WHERE r.dt_reserva BETWEEN '2025-12-01' AND '2025-12-31';</code></pre>
+
+      <h3>Controle de Acesso</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Usuário</th>
+            <th>Permissões</th>
+            <th>Funções Específicas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>passageiro</strong></td>
+            <td>Consultas básicas</td>
+            <td>consultar_voos_disponiveis()</td>
+          </tr>
+          <tr>
+            <td><strong>atendente</strong></td>
+            <td>Consultas + vendas</td>
+            <td>vender_passagem(), listar_passageiros_voo()</td>
+          </tr>
+          <tr>
+            <td><strong>gerente</strong></td>
+            <td>Acesso total</td>
+            <td>relatorio_ocupacao(), cancelar_reserva()</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Funções Auxiliares</h3>
+      <h4>Consultas Úteis</h4>
+      <pre><code>-- Listar aeroportos, aeronaves, voos
+SELECT * FROM listar_aeroportos();
+SELECT * FROM listar_aeronaves();
+SELECT * FROM listar_voos();
+
+-- Verificar assentos disponíveis
+SELECT * FROM consultar_assentos_disponiveis(1);
+
+-- Listar tipos de pagamento
+SELECT * FROM listar_tipos_pagamento();</code></pre>
+
     </article>
   </main>
 
