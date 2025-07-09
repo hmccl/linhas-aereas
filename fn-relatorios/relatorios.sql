@@ -7,13 +7,13 @@
 -- =========================
 
 -- Passageiro: só consulta
-CREATE USER passageiro WITH PASSWORD 'senha123';
+CREATE USER passageirofim WITH PASSWORD 'passageiro';
 
 -- Atendente: consulta + vendas
-CREATE USER atendente WITH PASSWORD 'senha123';
+CREATE USER atendentefim WITH PASSWORD 'atendente';
 
 -- Gerente: tudo
-CREATE USER gerente WITH PASSWORD 'senha123';
+CREATE USER gerentefim WITH PASSWORD 'gerente';
 
 -- 2. PERMISSÕES POR USUÁRIO
 -- =========================
